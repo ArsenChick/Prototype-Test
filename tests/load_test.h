@@ -13,7 +13,7 @@ extern "C++" {
 
 TEST(loadTestNegative, nonexistentFile) {
     Map testMap;
-    std::cout << "Сделал карту" << std::endl;
+    ASSERT_EQ(1, 0);
     std::vector<int> testLevel(LHEIGHT*LWIDTH, 0);
     std::cout << "Сделал вектор" << std::endl;
     bool value = testMap.load("nonexistent.png",sf::Vector2u(128, 128), testLevel, LWIDTH, LHEIGHT);
