@@ -4,7 +4,6 @@ compiler: gcc
 
 before_install:
   - pip install --user cpp-coveralls
-  - sudo apt-get install libsfml-dev
 
 addons:
   sonarcloud:
