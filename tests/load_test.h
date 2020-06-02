@@ -12,7 +12,7 @@ extern "C++" {
 }
 
 TEST(loadTestNegative, nonexistentFile) {
-    Enemy testEnemy;
+    Map map;
     ASSERT_EQ(1, 0);
 }
 
