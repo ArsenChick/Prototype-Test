@@ -9,11 +9,6 @@ CONFIG -= app_bundle
 CONFIG += thread
 CONFIG -= qt
 
-mytarget.commands = export LD_LIBRARY_PATH=$$PWD/../external/SFML-2.5.1/lib
-
-QMAKE_EXTRA_TARGETS += mytarget
-POST_TARGETDEPS += mytarget
-
 CONFIG(release, debug|release): LIBS += -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system
 CONFIG(debug, debug|release): LIBS += -lsfml-audio-d -lsfml-graphics-d -lsfml-network-d -lsfml-window-d -lsfml-system-d
 
@@ -45,3 +40,8 @@ SOURCES +=  main.cpp    \
     ../app/mapgenerator.cpp
 
 INCLUDEPATH += ../app
+
+mytarget.commands = export LD_LIBRARY_PATH=$$PWD/../external/SFML-2.5.1/lib
+
+QMAKE_EXTRA_TARGETS += mytarget
+POST_TARGETDEPS += mytarget
