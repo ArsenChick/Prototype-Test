@@ -11,12 +11,10 @@ extern "C++" {
 
 TEST(mapGeneratorTest, checkForCycles) {
 
-    std::vector<int> map(LWIDTH*LHEIGHT, 0);
-    std::vector<int> flags;
-    bool cycle;
     std::cerr << "[          ] starting cycle" << std::endl;
     for (unsigned int passes = 0; passes < 5; ++passes) {
         std::cerr << "[          ] pre-generation" << std::endl;
+        std::vector<int> map(LWIDTH*LHEIGHT, 0);
         MapGenerator mg;
         mg.levelGenerate(map);
 
@@ -31,13 +29,14 @@ TEST(mapGeneratorTest, checkForCycles) {
             std::cerr << std::endl;
         }
 
+        std::vector<int> flags;
         /* Массив индикаторов захода в выбранную вершину */
         for (unsigned int i = 0; i < LHEIGHT*LWIDTH; ++i) {
             flags.push_back(0);
         }
         std::cerr << "[          ] dfs started" << std::endl;
         /* Вызываем поиск цикла, если он найден, отмечаем*/
-        cycle = false;
+        bool cycle = false;
         if (dfs(0, -1, paths, flags)) {
             cycle = true;
         }
@@ -47,9 +46,6 @@ TEST(mapGeneratorTest, checkForCycles) {
 
         ASSERT_EQ(cycle, true);
 
-        paths.clear();
-        map.clear();
-        flags.clear();
         std::cerr << "[          ] vectors cleared" << std::endl;
     }
 }
