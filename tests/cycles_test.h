@@ -12,7 +12,6 @@ extern "C++" {
 TEST(mapGeneratorTest, checkForCycles) {
 
     std::vector<int> map(LWIDTH*LHEIGHT, 0);
-    std::vector<std::vector<int>> paths;
     std::vector<int> flags;
     bool cycle;
     std::cerr << "[          ] starting cycle" << std::endl;
@@ -22,6 +21,7 @@ TEST(mapGeneratorTest, checkForCycles) {
         mg.levelGenerate(map);
 
         std::cerr << "[          ] generated map" << std::endl;
+        std::vector<std::vector<int>> paths;
         paths = graph_table(map);
         std::cerr << "[          ] paths vector:" << std::endl;
         for (unsigned int start = 0; start < LWIDTH*LHEIGHT; ++start)
