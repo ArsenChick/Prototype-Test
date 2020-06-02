@@ -15,14 +15,19 @@ LIBS += -lgcov
 
 DEFINES +=
 
-HEADERS +=     \
-    ../app/map.h \
-    ../app/mapgenerator.h \
-    ../app/defines.h \
-    ../app/enemy.h \
-    ../app/hero.h \
+HEADERS +=      \
+    ../app/defines.h    \
+    ../app/enemy.h  \
+    ../app/hero.h   \
+    ../app/map.h    \
+    ../app/mapgenerator.h   \
+    test_assist.h   \
     map_test.h
 
-SOURCES +=  main.cpp \
+SOURCES +=  main.cpp    \
+    ../app/enemy.cpp    \
+    ../app/hero.cpp \
+    ../app/map.cpp  \
+    ../app/mapgenerator.cpp
 
 INCLUDEPATH += ../app
