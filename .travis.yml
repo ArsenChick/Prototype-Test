@@ -12,7 +12,7 @@ addons:
 script:
   - qmake
   - make
-  - export LD_LIBRARY_PATH=$$PWD/external/SFML-2.5.1/lib
+  - export LD_LIBRARY_PATH=$(pwd)/external/SFML-2.5.1/lib
   - echo $LD_LIBRARY_PATH
   - ./tests/tests
 
