@@ -12,7 +12,7 @@ addons:
 script:
   - qmake
   - make
-  - locate libsfml*
+  - locate libsfml
 
 after_success:
   - coveralls --root . -E ".*external.*" -E ".*tests.*"
