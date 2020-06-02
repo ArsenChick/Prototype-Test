@@ -2,11 +2,11 @@
 #define CYCLES_CHECK_H
 
 #include <gtest/gtest.h>
+#include "test_assist.h"
 
 extern "C++" {
 #include "mapgenerator.h"
 #include "defines.h"
-#include "test_assist.h"
 }
 
 TEST(mapGeneratorTest, checkForCycles) {
@@ -15,8 +15,9 @@ TEST(mapGeneratorTest, checkForCycles) {
     std::vector<std::vector<int>> paths;
     std::vector<int> flags;
     bool cycle;
+    std::cerr << "[          ] starting cycle" << std::endl;
     for (unsigned int passes = 0; passes < 5; ++passes) {
-
+        std::cerr << "[          ] pre-generation" << std::endl;
         MapGenerator *mg = new MapGenerator;
         mg->levelGenerate(map);
         delete mg;
