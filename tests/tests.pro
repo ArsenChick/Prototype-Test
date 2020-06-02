@@ -3,14 +3,13 @@ include(gtest_dependency.pri)
 LIBS += -L$$PWD/../external/SFML-2.5.1/lib
 
 TEMPLATE = app
-TARGET = myapp
+TARGET = tests
 CONFIG += console
 CONFIG -= app_bundle
 CONFIG += thread
 CONFIG -= qt
 
 mytarget.commands = export LD_LIBRARY_PATH=$$PWD/../external/SFML-2.5.1/lib
-mytarget.depends = myapp
 
 QMAKE_EXTRA_TARGETS += mytarget
 POST_TARGETDEPS += mytarget
