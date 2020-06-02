@@ -50,4 +50,42 @@ void checkPaths(std::vector<int> &tiles, std::vector<bool> &paths, int pos)
     }
 }
 
+std::vector<std::vector<int>> graph_table(std::vector<int> map) {
+    std::vector<std::vector<int>> result;
+
+    for (unsigned int i = 0; i < LHEIGHT*LWIDTH; ++i) {
+        std::vector<int> sup;
+        result.push_back(sup);
+    }
+
+    for (unsigned int i = 0; i < LHEIGHT*LWIDTH; ++i) {
+        if (map[i] && ROUTEUP == 1)
+            result[i].push_back(i - LWIDTH);
+        if (map[i] && ROUTELEFT == 1)
+            result[i].push_back(i - 1);
+        if (map[i] && ROUTEDOWN == 1)
+            result[i].push_back(i + LWIDTH);
+        if (map[i] && ROUTERIGHT == 1)
+            result[i].push_back(i + 1);
+    }
+
+    return result;
+}
+
+bool dfs(int v, int prev, std::vector<std::vector<int>> &paths, std::vector<int> &flags) {
+    flags[v] = 1;
+    for (unsigned int i = 0; i < paths[v].size(); ++i) {
+        int way = paths[v][i];
+        if (way != prev) {
+            if (flags[way] == 1)
+                return true;
+            if (flags[way] == 0)
+                if (dfs(way, v, paths, flags))
+                    return true;
+        }
+    }
+    flags[v] = 2;
+    return false;
+}
+
 #endif // TEST_ASSIST_H
