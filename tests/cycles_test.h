@@ -11,38 +11,38 @@ extern "C++" {
 
 TEST(mapGeneratorTest, checkForCycles) {
 
-    for (unsigned int i = 0; i < 5; ++i) {
-
-        /* Создаем карту */
-        std::vector<int> map;
+    std::vector<int> map;
+    std::vector<std::vector<int>> paths;
+    std::vector<int> flags;
+    bool cycle;
+    for (unsigned int passes = 0; passes < 5; ++passes) {
 
         MapGenerator *mg = new MapGenerator;
         mg->levelGenerate(map);
         delete mg;
-
-        std::vector<std::vector<int>> paths;
-        /* Получаем массив содержащий смежные вершины
-        * для каждой вершины из конфигов
-        */
+        std::cerr << "[          ] generated map" << std::endl;
         paths = graph_table(map);
 
         /* Массив индикаторов захода в выбранную вершину */
-        std::vector<int> flags;
         for (unsigned int i = 0; i < LHEIGHT*LWIDTH; ++i) {
             flags.push_back(0);
         }
+        std::cerr << "[          ] dfs started" << std::endl;
         /* Вызываем поиск цикла, если он найден, отмечаем*/
-        bool cycle = false;
+        cycle = false;
         if (dfs(0, -1, paths, flags)) {
             cycle = true;
         }
+
+        std::cerr << "[          ] cycle detected" << std::endl;
+        std::cerr << "[          ] for: " << passes + 1 << "time" << std::endl;
 
         ASSERT_EQ(cycle, true);
 
         paths.clear();
         map.clear();
         flags.clear();
-        cycle = true;
+        std::cerr << "[          ] vectors cleared" << std::endl;
     }
 }
 #endif // CYCLES_CHECK_H
