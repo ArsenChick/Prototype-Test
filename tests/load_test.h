@@ -15,7 +15,7 @@ Map createMap (){
 }
 
 TEST(loadTestNegative, nonexistentFile) {
-    std::vector<int> level(LHEIGHT*LWIDTH, 0);
+    std::vector<int> testlevel(LHEIGHT*LWIDTH, 0);
     ASSERT_EQ(0, 0);
     createMap().load("nonexistentFile.png",sf::Vector2u(128, 128), testlevel, LWIDTH, LHEIGHT);
     ASSERT_EQ(1, 0);
