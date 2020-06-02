@@ -59,13 +59,13 @@ std::vector<std::vector<int>> graph_table(std::vector<int> map) {
     }
 
     for (unsigned int i = 0; i < LHEIGHT*LWIDTH; ++i) {
-        if (map[i] && ROUTEUP != 0)
+        if ((map[i] & ROUTEUP) != 0)
             result[i].push_back(i - LWIDTH);
-        if (map[i] && ROUTELEFT != 0)
+        if ((map[i] & ROUTELEFT) != 0)
             result[i].push_back(i - 1);
-        if (map[i] && ROUTEDOWN != 0)
+        if ((map[i] & ROUTEDOWN) != 0)
             result[i].push_back(i + LWIDTH);
-        if (map[i] && ROUTERIGHT != 0)
+        if ((map[i] & ROUTERIGHT) != 0)
             result[i].push_back(i + 1);
     }
 
