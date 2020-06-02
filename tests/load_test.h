@@ -12,7 +12,7 @@ extern "C++" {
 }
 
 TEST(loadTestNegative, nonexistentFile) {
-    ASSERT_EQ(0, 0);
+    Map map;    
 }
 
 #endif // LOAD_TEST_H
