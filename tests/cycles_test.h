@@ -23,6 +23,13 @@ TEST(mapGeneratorTest, checkForCycles) {
 
         std::cerr << "[          ] generated map" << std::endl;
         paths = graph_table(map);
+        std::cerr << "[          ] paths vector:" << std::endl;
+        for (unsigned int start = 0; start < LWIDTH*LHEIGHT; ++start)
+        {
+            for (unsigned int start_2 = 0; start_2 < paths[start].size(); ++start_2)
+                std::cerr << paths[start][start_2] << " ";
+            std::cerr << std::endl;
+        }
 
         /* Массив индикаторов захода в выбранную вершину */
         for (unsigned int i = 0; i < LHEIGHT*LWIDTH; ++i) {
@@ -35,7 +42,7 @@ TEST(mapGeneratorTest, checkForCycles) {
             cycle = true;
         }
 
-        std::cerr << "[          ] cycle detected" << std::endl;
+        std::cerr << "[          ] cycle detected: " << cycle << std::endl;
         std::cerr << "[          ] for: " << passes + 1 << "time" << std::endl;
 
         ASSERT_EQ(cycle, true);
