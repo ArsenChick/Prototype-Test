@@ -29,6 +29,8 @@ public:
     float getX() {return x;}
     float getY() {return y;}
 
+    int getPos() {return pos;}
+
     sf::Sprite getSprite() {return sprite;}
 };
 
