@@ -12,12 +12,12 @@ extern "C++" {
 }
 
 TEST(loadTestNegative, nonexistentFile) {
-    Map testMap;
     ASSERT_EQ(1, 0);
+    Map testMap;
     std::vector<int> testLevel(LHEIGHT*LWIDTH, 0);
-    std::cout << "Сделал вектор" << std::endl;
+    ASSERT_EQ(2, 0);
     bool value = testMap.load("nonexistent.png",sf::Vector2u(128, 128), testLevel, LWIDTH, LHEIGHT);
-    std::cout << "Загрузил несуществующее" << std::endl;
+    ASSERT_EQ(3, 0);
     ASSERT_EQ(value, false);
 }
 
