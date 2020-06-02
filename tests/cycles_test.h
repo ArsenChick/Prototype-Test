@@ -3,11 +3,13 @@
 
 #include <gtest/gtest.h>
 
+extern "C++" {
 #include "mapgenerator.h"
 #include "defines.h"
 #include "test_assist.h"
+}
 
-TEST(cycles, positive) {
+TEST(mapGeneratorTest, checkForCycles) {
 
     for (unsigned int i = 0; i < 5; ++i) {
 
@@ -36,6 +38,11 @@ TEST(cycles, positive) {
         }
 
         ASSERT_EQ(cycle, true);
+
+        paths.clear();
+        map.clear();
+        flags.clear();
+        cycle = true;
     }
 }
 #endif // CYCLES_CHECK_H
