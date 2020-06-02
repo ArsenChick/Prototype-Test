@@ -12,7 +12,8 @@ addons:
 script:
   - qmake
   - make
-  - ./tests/tests
+  - sudo ldconfig
+  - export LD_LIBRARY_PATH=$$PWD/../external/SFML-2.5.1/lib && ./tests/tests
 
 after_success:
   - coveralls --root . -E ".*external.*" -E ".*tests.*"

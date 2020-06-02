@@ -1,10 +1,5 @@
 include(gtest_dependency.pri)
 
-#mytarget.commands = export LD_LIBRARY_PATH=$$PWD/../external/SFML-2.5.1/lib
-
-#QMAKE_EXTRA_TARGETS += mytarget
-#POST_TARGETDEPS += mytarget
-
 LIBS += -L$$PWD/../external/SFML-2.5.1/lib
 
 TEMPLATE = app
