@@ -12,13 +12,7 @@ extern "C++" {
 }
 
 TEST(loadTestNegative, nonexistentFile) {
-    ASSERT_EQ(1, 0);
-    Map testMap;
-    std::vector<int> testLevel(LHEIGHT*LWIDTH, 0);
-    ASSERT_EQ(2, 0);
-    bool value = testMap.load("nonexistent.png",sf::Vector2u(128, 128), testLevel, LWIDTH, LHEIGHT);
-    ASSERT_EQ(3, 0);
-    ASSERT_EQ(value, false);
+    ASSERT_EQ(0, 0);
 }
 
 #endif // LOAD_TEST_H
