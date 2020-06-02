@@ -1,5 +1,10 @@
 include(gtest_dependency.pri)
 
+mytarget.target = .buildfile
+mytarget.commands = export LD_LIBRARY_PATH=$$PWD/../external/SFML-2.5.1/lib
+
+POST_TARGETDEPS += mytarget
+
 LIBS += -L$$PWD/../external/SFML-2.5.1/lib
 
 TEMPLATE = app
@@ -39,8 +44,3 @@ SOURCES +=  main.cpp    \
     ../app/mapgenerator.cpp
 
 INCLUDEPATH += ../app
-
-mytarget.target = .buildfile
-mytarget.commands = export LD_LIBRARY_PATH=$$PWD/../external/SFML-2.5.1/lib
-
-POST_TARGETDEPS += mytarget
