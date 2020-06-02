@@ -13,7 +13,7 @@ script:
   - qmake
   - make
   - export LD_LIBRARY_PATH=$$PWD/external/SFML-2.5.1/lib
-  - echo LD_LIBRARY_PATH
+  - echo $LD_LIBRARY_PATH
   - ./tests/tests
 
 after_success:
