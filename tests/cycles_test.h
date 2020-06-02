@@ -18,9 +18,9 @@ TEST(mapGeneratorTest, checkForCycles) {
     std::cerr << "[          ] starting cycle" << std::endl;
     for (unsigned int passes = 0; passes < 5; ++passes) {
         std::cerr << "[          ] pre-generation" << std::endl;
-        MapGenerator *mg = new MapGenerator;
-        mg->levelGenerate(map);
-        delete mg;
+        MapGenerator mg;
+        mg.levelGenerate(map);
+
         std::cerr << "[          ] generated map" << std::endl;
         paths = graph_table(map);
 
