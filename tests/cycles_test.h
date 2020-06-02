@@ -11,7 +11,7 @@ extern "C++" {
 
 TEST(mapGeneratorTest, checkForCycles) {
 
-    std::vector<int> map;
+    std::vector<int> map(LWIDTH*LHEIGHT, 0);
     std::vector<std::vector<int>> paths;
     std::vector<int> flags;
     bool cycle;
