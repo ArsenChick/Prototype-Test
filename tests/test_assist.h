@@ -2,9 +2,13 @@
 #define TEST_ASSIST_H
 
 #include <vector>
+#include <chrono>
+#include <random>
 
 extern "C++" {
 #include "defines.h"
+#include "hero.h"
+#include "enemy.h"
 }
 
 void checkPaths(std::vector<int> &tiles, std::vector<bool> &paths, int pos)
@@ -47,6 +51,35 @@ void checkPaths(std::vector<int> &tiles, std::vector<bool> &paths, int pos)
 
         paths[newpos] = true;
         checkPaths(tiles, paths, newpos);
+    }
+}
+
+// Original lines from main.cpp
+void spawnCharacters(Hero &hero, Enemy* soldier)
+{
+    std::mt19937 gen;
+    auto now = std::chrono::high_resolution_clock::now();
+    gen.seed(now.time_since_epoch().count());
+
+    int hero_pos = gen() % (LHEIGHT*LWIDTH);
+    hero.setStartPosition(hero_pos);
+
+    int row = hero_pos / LWIDTH;
+    int col = hero_pos % LWIDTH;
+
+    for (int i = 0; i < 5; i++) {
+        int enemy_col, enemy_row;
+
+        while(true) {
+            enemy_col = gen() % LWIDTH;
+            enemy_row = gen() % LHEIGHT;
+            if ((enemy_col < col - 1 || enemy_col > col + 1) &&
+                (enemy_row < row - 1 || enemy_row > row + 1))
+                break;
+        }
+
+        int enemy_pos = enemy_row * LWIDTH + enemy_col;
+        soldier[i].setStartPosition(enemy_pos);
     }
 }
 

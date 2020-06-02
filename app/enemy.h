@@ -36,6 +36,8 @@ public:
     int getDX() {return dx;}
     int getDY() {return dy;}
 
+    int getPos() {return pos;}
+
     sf::Sprite getSprite() {return sprite;}
 };
 
