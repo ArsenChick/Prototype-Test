@@ -8,7 +8,6 @@ POST_TARGETDEPS += mytarget
 LIBS += -L$$PWD/../external/SFML-2.5.1/lib
 
 TEMPLATE = app
-TARGET = tests
 CONFIG += console
 CONFIG -= app_bundle
 CONFIG += thread
