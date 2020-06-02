@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "map_test.h"
-#include "cycles_test.h"
+//#include "map_test.h"
+//#include "cycles_test.h"
 #include "load_test.h"
 
 int main(int argc, char *argv[])
