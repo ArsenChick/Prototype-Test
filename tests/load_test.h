@@ -12,7 +12,8 @@ extern "C++" {
 }
 
 TEST(loadTestNegative, nonexistentFile) {
-    Map map;    
+    Enemy testEnemy;
+    ASSERT_EQ(1, 0);
 }
 
 #endif // LOAD_TEST_H
