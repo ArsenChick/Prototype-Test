@@ -13,7 +13,9 @@ script:
   - qmake
   - make
   - sudo ldconfig
-  - export LD_LIBRARY_PATH=$$PWD/../external/SFML-2.5.1/lib && ./tests/tests
+  - LD_LIBRARY_PATH=$$PWD/../external/SFML-2.5.1/lib:$LD_LIBRARY_PATH
+  - export LD_LIBRARY_PATH
+  - ./tests/tests
 
 after_success:
   - coveralls --root . -E ".*external.*" -E ".*tests.*"
