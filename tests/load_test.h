@@ -17,7 +17,7 @@ TEST(loadTestPositive, base) {
     std::vector<int> testlevel(LHEIGHT*LWIDTH, 0);
     Map testMap;
     
-    bool value = testMap.load("assets/map.png",sf::Vector2u(128, 128), testlevel, LWIDTH, LHEIGHT);
+    bool value = testMap.load("../app/assets/map.png",sf::Vector2u(128, 128), testlevel, LWIDTH, LHEIGHT);
     ASSERT_EQ(value, true);
     
 }
