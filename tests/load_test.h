@@ -13,6 +13,15 @@ extern "C++" {
 #include "map.h"
 }
 
+TEST(loadTestPositive, base) {
+    std::vector<int> testlevel(LHEIGHT*LWIDTH, 0);
+    Map testMap;
+    
+    bool value = testMap.load("nonexistentFile.png",sf::Vector2u(128, 128), testlevel, LWIDTH, LHEIGHT);
+    ASSERT_EQ(value, true);
+    
+}
+
 TEST(loadTestNegative, nonexistentFile) {
     std::vector<int> testlevel(LHEIGHT*LWIDTH, 0);
     Map testMap;
