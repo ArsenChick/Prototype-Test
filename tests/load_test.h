@@ -62,7 +62,7 @@ TEST(loadTestNegative, nonexistentFile) {
     free(debug);
 }
 
-TEST(loadTestNegative, securedFile) {
+/*TEST(loadTestNegative, securedFile) {
     std::vector<int> testlevel(LHEIGHT*LWIDTH, 0);
     Map testMap;
     
@@ -114,6 +114,6 @@ TEST(loadTestNegative, securedFile) {
 
     free(debug);
     free(output);
-}
+}*/
 
 #endif // LOAD_TEST_H
