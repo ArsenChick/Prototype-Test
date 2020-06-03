@@ -17,7 +17,7 @@ TEST(loadTestNegative, nonexistentFile) {
     std::vector<int> testlevel(LHEIGHT*LWIDTH, 0);
     Map testMap;
     
-    сhar *debug = (char *)malloc(sizeof(char)*64);
+    char *debug = (char *)malloc(sizeof(char)*64);
     snprintf(debug, 64, "file.log");
     
     int newSTDerr = open(debug, O_WRONLY | O_CREAT | O_TRUNC, 0600);
