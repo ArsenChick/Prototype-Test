@@ -30,6 +30,7 @@ HEADERS +=      \
     ../app/map.h    \
     ../app/mapgenerator.h   \
     cycles_test.h \
+    load_test.h \
     test_assist.h   \
     map_test.h
 
