@@ -14,6 +14,8 @@ CONFIG(debug, debug|release): LIBS += -lsfml-audio-d -lsfml-graphics-d -lsfml-ne
 INCLUDEPATH += $$PWD/../external/SFML-2.5.1/include
 DEPENDPATH += $$PWD/../external/SFML-2.5.1/include
 
+DEFINES += INPUTPATH=\\\"$$PWD/../app/assets/map.png\\\"
+
 QMAKE_CXXFLAGS += -Wall -Wextra -Werror
 QMAKE_CFLAGS += -Wall -Wextra -Werror
 
