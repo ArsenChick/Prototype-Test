@@ -5,7 +5,6 @@ compiler: gcc
 before_install:
   - pip install --user cpp-coveralls
   - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
 
 addons:
   sonarcloud:
