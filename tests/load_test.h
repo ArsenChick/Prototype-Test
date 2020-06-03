@@ -62,4 +62,59 @@ TEST(loadTestNegative, nonexistentFile) {
     free(debug);
 }
 
+TEST(loadTestNegative, securedFile) {
+    std::vector<int> testlevel(LHEIGHT*LWIDTH, 0);
+    Map testMap;
+    
+    char *debug = (char *)malloc(sizeof(char)*64);
+    char *output = (char *)malloc(sizeof(char)*1024);
+    snprintf(debug, 64, "file.log");
+    snprintf(output, 1024, "inputSecured.png");
+
+    // Creating a temporary file
+    int locked = creat(output, 0000);
+    ASSERT_NE(locked, -1);
+    close(locked);
+
+    int newSTDout = open(debug, O_WRONLY | O_CREAT | O_TRUNC, 0600);
+    ASSERT_NE(newSTDout, -1);
+    int oldSTDout = dup(STDOUT_FILENO);
+    close(STDOUT_FILENO);
+    dup2(newSTDout, STDOUT_FILENO);
+
+    bool value = testMap.load(output,sf::Vector2u(128, 128), testlevel, LWIDTH, LHEIGHT);
+    ASSERT_EQ(value, false);
+
+    fflush(stdout);
+    close(newSTDout);
+    dup2(oldSTDout, STDOUT_FILENO);
+
+    int testFD = open(debug, O_RDONLY);
+    char *outBuf = (char *)malloc(sizeof(char)*1024);
+    char *testBuf = (char *)malloc(sizeof(char)*1024);
+    int testCount;
+
+    testCount = read(testFD, testBuf, 1024);
+    snprintf(outBuf, 1024, "The file %s cannot be opened\n", output);
+    ASSERT_TRUE(testCount > 0);
+    close(testFD);
+
+    for(int i = 0; i < testCount; i++)
+        ASSERT_EQ(outBuf[i], testBuf[i]);
+
+    free(outBuf);
+    free(testBuf);
+    remove_all(txt);
+
+    chmod(output, 0777);
+
+    int ret = std::remove(debug);
+    ASSERT_EQ(ret, 0);
+    ret = std::remove(output);
+    ASSERT_EQ(ret, 0);
+
+    free(debug);
+    free(output);
+}
+
 #endif // LOAD_TEST_H
