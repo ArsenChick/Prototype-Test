@@ -4,8 +4,6 @@ compiler: gcc
 
 services:
   - xvfb
-before_script:
-  - export DISPLAY=:99.0
    
 before_install:
   - pip install --user cpp-coveralls
