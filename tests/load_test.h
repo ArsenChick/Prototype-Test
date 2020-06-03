@@ -17,8 +17,8 @@ TEST(loadTestNegative, nonexistentFile) {
     std::vector<int> testlevel(LHEIGHT*LWIDTH, 0);
     Map testMap;
     
-    char *debug = (char *)malloc(sizeof(char)*64);
-    snprintf(debug, 64, "file.log");
+    char *debug = (char *)malloc(sizeof(char)*128);
+    snprintf(debug, 128, "file.log");
     
     int newSTDerr = open(debug, O_WRONLY | O_CREAT | O_TRUNC, 0600);
     ASSERT_NE(newSTDerr, -1);
@@ -35,12 +35,12 @@ TEST(loadTestNegative, nonexistentFile) {
 
     int testFD = open(debug, O_RDONLY);
     
-    char *testBuf = (char *)malloc(sizeof(char)*64);
-    char *outBuf = (char *)malloc(sizeof(char)*64);
+    char *testBuf = (char *)malloc(sizeof(char)*128);
+    char *outBuf = (char *)malloc(sizeof(char)*128);
     int testCount;
 
-    testCount = read(testFD, testBuf, 64);
-    snprintf(outBuf, 64, "Failed to load image \"nonexistentFile.png\"\n");
+    testCount = read(testFD, testBuf, 128);
+    snprintf(outBuf, 128, "Failed to load image \"nonexistentFile.png\". Reason: Unable to open file\n");
     ASSERT_TRUE(testCount > 0);
     close(testFD);
 
