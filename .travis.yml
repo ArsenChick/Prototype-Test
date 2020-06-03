@@ -2,14 +2,21 @@ language: cpp
 dist: bionic
 compiler: gcc
 
-before_install:
+services:
+  - xvfb
+before_script:
   - export DISPLAY=:99.0
+   
+before_install:
   - pip install --user cpp-coveralls
-
+  
 addons:
   sonarcloud:
     organization: "doomfister"
 
+before_script:
+  - export DISPLAY=:99.0
+  
 script:
   - qmake
   - make
