@@ -104,7 +104,6 @@ TEST(loadTestNegative, securedFile) {
 
     free(outBuf);
     free(testBuf);
-    remove_all(txt);
 
     chmod(output, 0777);
 
